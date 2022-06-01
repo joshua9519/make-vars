@@ -187,6 +187,6 @@ func Test_main(t *testing.T) {
 		}()
 
 		main()
-		os.Remove("test/vars.tf")
+		os.Remove("test/variables.tf")
 	})
 }

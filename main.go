@@ -87,11 +87,11 @@ func main() {
 		vars = append(vars, s...)
 	}
 	vars = removeDups(vars)
-	f, err := os.Create(filepath.Join(path, "vars.tf"))
-    if err != nil {
-        log.Fatal(err)
+	f, err := os.Create(filepath.Join(path, "variables.tf"))
+	if err != nil {
+		log.Fatal(err)
 	}
-    defer f.Close()
+	defer f.Close()
 
 	if err = makeVarsFile(vars, f); err != nil {
 		log.Fatal(err)
