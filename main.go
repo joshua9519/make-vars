@@ -4,7 +4,6 @@ import (
 	"html/template"
 	"io"
 	"io/fs"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -35,12 +34,12 @@ func findTfFiles(root string) ([]string, error) {
 
 func readTF(file string) ([]string, error) {
 	// read TF file and return all vars
-	content, err := ioutil.ReadFile(file)
+	content, err := os.ReadFile(file)
 	if err != nil {
 		return nil, err
 	}
 
-	r := regexp.MustCompile(`var.(\w+)`)
+	r := regexp.MustCompile(`var\.(\w+)`)
 	allMatches := r.FindAllStringSubmatch(string(content), -1)
 
 	matches := []string{}
